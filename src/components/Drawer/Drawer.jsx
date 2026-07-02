@@ -1,3 +1,5 @@
+import './drawer.scss';
+
 export function Drawer() {
     return (
         <div className="overlay" style={{ display: 'none' }}>
