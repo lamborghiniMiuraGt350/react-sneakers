@@ -23,6 +23,12 @@
         transform: translateY(-5px);
         box-shadow: 0 20px 35px 0 rgba(0, 0, 0, 0.06);
     }
+
+    .plus {
+        cursor: pointer;
+        margin: 0;
+
+    }
 }
 
 .card__bottom {
@@ -60,12 +66,7 @@
     color: #000;
 }
 
-.button {
-    border: 1px solid #f2f2f2;
-    border-radius: 8px;
-    background: #fff;
 
-}
 
 .favorite {
     position: absolute;
