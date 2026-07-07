@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import { useCart } from '../../hooks/useCart';
 export function Header({ onClickCart }) {
 
-    const { cartItems, totalPrice } = useCart();
+    const { totalPrice } = useCart();
 
     return (
         <header className="header">
             <div className="headerLeft">
-                <Link to="/"><img width={40} height={40} src="/img/logo.png" alt="Logo" />
+                <Link to="/"><img width={40} height={40} src={process.env.PUBLIC_URL + "/img/logo.png"} alt="Logo" />
                     <div className="headerInfo">
                         <h3>Sneakers</h3>
                         <p>The best sneaker store</p>

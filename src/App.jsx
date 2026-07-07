@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Card } from "./components/Card/Card";
 import { Drawer } from "./components/Drawer/Drawer";
 import { Header } from "./components/Header/Header";
 import axios from 'axios';
@@ -8,6 +7,7 @@ import { Home } from "./pages/Home";
 import { Favorites } from "./pages/Favorites";
 import { AppContext } from "./context";
 import { Orders } from "./pages/Orders";
+import { Slider } from "./components/Slider/Slider";
 // const data = [
 //   { name: `Nike Blazer Mid Suede Men's Sneakers`, price: 300, image: '/img/main/Blazer.jpg' },
 //   { name: `Nike Air Max 270 Men's Sneakers`, price: 300, image: '/img/main/Air.jpg' },
@@ -122,7 +122,7 @@ function App() {
         <Drawer items={cartItems} onClose={() => setCartOppened(false)} onRemove={onRemoveCartItem} oppened={cartOppened} />
 
         <Header onClickCart={() => setCartOppened(true)} />
-
+        <Slider />
         <Routes>
           <Route path='/' element={
             <Home items={items}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import ContentLoader from "react-content-loader"
 import './card.scss';
 
@@ -21,7 +21,7 @@ export function OrderedCard({ name, price, image, id, loading = false }) {
                 <rect x="118" y="179" rx="8" ry="8" width="32" height="32" />
             </ContentLoader>) : (
                 <>
-                    <img width='100%' height={135} src={image} alt="Sneaker" />
+                    <img width='100%' height={135} src={`${process.env.PUBLIC_URL}/${image}`} alt="Sneaker" />
                     <h5>{name}</h5>
                     <div className="card__bottom">
                         <div className="card__info">

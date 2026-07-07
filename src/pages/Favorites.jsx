@@ -2,7 +2,7 @@ import React from "react"
 import { Card } from "../components/Card/Card"
 import { AppContext } from "../context";
 
-export function Favorites({ }) {
+export function Favorites() {
     const { favorites, onAddToFavorite, onAddToCart } = React.useContext(AppContext);
 
 

@@ -39,7 +39,7 @@ export function Drawer({ onClose, onRemove, oppened, items = [] }) {
     return (
         <div className={`overlay ${oppened ? 'active' : ''}`}>
             <div className='drawer'>
-                <h2>Cart <img onClick={onClose} className="remove__btn" width={32} height={32} src="/img/icons/btn-remove.svg" alt="button" /></h2>
+                <h2>Cart <img onClick={onClose} className="remove__btn" width={32} height={32} src={`${process.env.PUBLIC_URL}/img/icons/btn-remove.svg`} alt="button" /></h2>
 
                 {/* ITEMS OR EMPTY */}
                 {items.length > 0 ? (
@@ -47,12 +47,12 @@ export function Drawer({ onClose, onRemove, oppened, items = [] }) {
                         <div className="items">
                             {items.map((item) => (
                                 <div className="cart__item" key={item.id}>
-                                    <div style={{ backgroundImage: `url(${item.image})` }} className="cart-item-img"></div>
+                                    <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/${item.image})` }} className="cart-item-img"></div>
                                     <div className="cart__info">
                                         <p>{item.name}</p>
                                         <p>{item.price} $</p>
                                     </div>
-                                    <img onClick={() => onRemove(item.id)} className="remove__btn" src="/img/icons/btn-remove.svg" alt="button" />
+                                    <img onClick={() => onRemove(item.id)} className="remove__btn" src={`${process.env.PUBLIC_URL}/img/icons/btn-remove.svg`} alt="button" />
                                 </div>
                             ))}
                         </div>
@@ -75,9 +75,11 @@ export function Drawer({ onClose, onRemove, oppened, items = [] }) {
                             </svg></button>
                         </div>
                     </div>
-                ) : (<Info title={isOrderComplete ? 'Order placed!' : 'Cart is empty'}
+                ) : (<Info
+                    title={isOrderComplete ? 'Order placed!' : 'Cart is empty!'}
                     description={isOrderComplete ? `Your order #${orderId} will be handed over to the courier service soon.` : 'Add at least one item to place an order.'}
-                    image={isOrderComplete ? "./img/cart/done.png" : "./img/cart/empty.png"} />)}
+                    image={isOrderComplete ? `${process.env.PUBLIC_URL}/img/cart/done.png` : `${process.env.PUBLIC_URL}/img/cart/empty.png`}
+                />)}
             </div>
         </div >
     );
