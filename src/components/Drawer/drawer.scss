@@ -1,16 +1,28 @@
 .overlay {
     overflow: hidden;
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 2;
     width: 100%;
     height: 100%;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out, visibility 0.1s ease-in-out;
+}
+
+.active {
+    visibility: visible;
+    opacity: 1;
+
+    .drawer {
+        transform: translateX(0%);
+    }
 }
 
 .drawer {
-    position: absolute;
+    position: fixed;
     width: 420px;
     height: 100%;
     right: 0;
@@ -19,6 +31,8 @@
     padding: 30px;
     display: flex;
     flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
 
     h2 {
         font-weight: 700;
@@ -33,6 +47,7 @@
             cursor: pointer;
         }
     }
+
 }
 
 .cart__item {
@@ -50,7 +65,6 @@
 }
 
 .cart__info {
-    margin-right: 20px;
 
     & p:first-child {
         margin-bottom: 5px;
@@ -83,8 +97,14 @@
 }
 
 //=================================================================
+.items-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
 .items {
-    flex: 1;
+    flex-grow: 1;
     overflow: auto;
     margin-bottom: 40px;
 }
@@ -125,21 +145,19 @@
         color: #000;
     }
 
-    button {
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 55px;
-        padding: 18px 0;
-        font-weight: 600;
-        font-size: 16px;
-        text-align: center;
-        color: #fff;
-        background: #9dd458;
-        border-radius: 18px;
-        transform: background-color;
-        position: relative;
+    .greenBtn {
+        &:disabled {
+            animation: button-loading 0.6s ease-in-out infinite;
+        }
+    }
+
+    .greenBtn {
+        svg {
+            position: absolute;
+            right: 30px;
+            transition: left 0.2 ease-in-out;
+
+        }
 
         &:hover {
             background-color: lighten(#9dd458, 5%);
@@ -148,15 +166,8 @@
                 right: 25px;
             }
         }
-
-        svg {
-            position: absolute;
-            right: 30px;
-            transition: right 0.2 ease-in-out;
-
-
-        }
     }
+
 }
 
 
@@ -184,22 +195,16 @@
         margin-top: 9px;
     }
 
-    button {
+    .greenBtn {
         width: 245px;
-        margin-top: 20px;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        height: 55px;
-        padding: 18px 0;
-        font-weight: 600;
-        font-size: 16px;
-        text-align: center;
-        color: #fff;
-        background: #9dd458;
-        border-radius: 18px;
-        transition: background-color 0, 3s ease;
-        position: relative;
+
+        svg {
+            transform: rotate(-180deg);
+            position: absolute;
+            left: 50px;
+            transition: left 0.2 ease-in-out;
+
+        }
 
         &:hover {
             background-color: lighten(#9dd458, 5%);
@@ -208,14 +213,50 @@
                 left: 45px;
             }
         }
+    }
+}
 
-        svg {
-            transform: rotate(-180deg);
-            position: absolute;
-            left: 50px;
-            transition: left 0.2 ease-in-out;
+.greenBtn {
+    width: 100%;
+    margin-top: 20px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 55px;
+    padding: 18px 0;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+    background: #9dd458;
+    border-radius: 18px;
+    transition: background-color 0, 3s ease;
+    position: relative;
 
 
-        }
+
+    svg {
+        transition: right 0.2 ease-in-out;
+
+
+    }
+
+    &:disabled {
+        background-color: #BEBEBE;
+        cursor: default;
+    }
+}
+
+@keyframes button-loading {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+
+    100% {
+        opacity: 1;
     }
 }

@@ -72,3 +72,17 @@ body {
 }
 
 //=================================================================
+.order-wrapper {
+  width: 100%;
+
+  h3 {
+    font-weight: 700;
+    font-size: 20px;
+    color: #000;
+    margin-bottom: 20px;
+  }
+
+  .cards {
+    justify-content: flex-start;
+  }
+}

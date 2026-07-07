@@ -1,20 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import ContentLoader from "react-content-loader"
 import './card.scss';
-import { AppContext } from '../../context';
 
-export function Card({ name, price, image, id, parentId, onPlus, onFavourite, favorited = false, loading = false }) {
-    // const [isAdded, setIsAdded] = useState(added);
-    const { isItemAdded, favorites } = React.useContext(AppContext);
-    const [isFavorite, setIsFavorite] = useState(favorited);
+export function OrderedCard({ name, price, image, id, loading = false }) {
 
-    const onClickPlus = () => {
-        onPlus({ name, price, image, id, parentId: id })
-    }
-    const onClickFavourite = () => {
-        onFavourite({ name, price, image, id, parentId: id });
-        setIsFavorite(!isFavorite);
-    }
     return (
         <div className="card">
             {loading ? (<ContentLoader
@@ -32,9 +21,6 @@ export function Card({ name, price, image, id, parentId, onPlus, onFavourite, fa
                 <rect x="118" y="179" rx="8" ry="8" width="32" height="32" />
             </ContentLoader>) : (
                 <>
-                    <div className="favorite" onClick={onClickFavourite}>
-                        <img src={isFavorite ? '/img/icons/like-end.svg' : '/img/icons/like-start.svg'} alt="" />
-                    </div>
                     <img width='100%' height={135} src={image} alt="Sneaker" />
                     <h5>{name}</h5>
                     <div className="card__bottom">
@@ -42,14 +28,8 @@ export function Card({ name, price, image, id, parentId, onPlus, onFavourite, fa
                             <p className="card__info-text">Price:</p>
                             <p className="card__info-price">{price} $</p>
                         </div>
-                        <img onClick={onClickPlus}
-                            className='plus'
-                            width={32} height={32}
-                            src={isItemAdded(id) ? './img/icons/btn-done.svg' : './img/icons/btn-plus.svg'}
-                            alt="plus" />
                     </div>
                 </>)}
         </div>
     );
 }
-

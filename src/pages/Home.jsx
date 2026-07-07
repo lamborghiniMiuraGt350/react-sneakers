@@ -1,6 +1,29 @@
+import React from "react";
 import { Card } from "../components/Card/Card";
 
-export function Home({ items, searchValue, setSearchValue, onChangeSearchInput, onAddToFavorite,onAddToCart }) {
+export function Home({ items,
+    searchValue,
+    setSearchValue,
+    onChangeSearchInput,
+    onAddToFavorite,
+    onAddToCart,
+    isLoading }) {
+
+    const renderItems = () => {
+        const filteredItems = items.filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase()));
+
+        return (isLoading ? [...Array(12)] : filteredItems).map((item, index) => <Card
+            key={index}
+            // id={item.id}
+            // name={item.name}
+            // price={item.price}
+            // image={item.image}
+            onFavourite={(obj) => onAddToFavorite(obj)}
+            onPlus={(obj) => onAddToCart(obj)}
+            loading={isLoading}
+            {...item} />)
+
+    }
     return (
         <div className="content">
             <div className="content__inner">
@@ -11,20 +34,11 @@ export function Home({ items, searchValue, setSearchValue, onChangeSearchInput, 
                     </svg>
                     {searchValue && <img onClick={() => setSearchValue('')} className="clear" width={25} height={25} src="/img/icons/btn-remove.svg" alt="button" />}
                     <input type="text" placeholder="Search..." value={searchValue} onChange={onChangeSearchInput} />
-                </div>   
+                </div>
             </div>
             <div className="cards">
                 {/* CARDS  */}
-                {items
-                    .filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase()))
-                    .map(item => <Card
-                        key={item.id}
-                        id={item.id}
-                        name={item.name}
-                        price={item.price}
-                        image={item.image}
-                        onFavourite={(obj) => onAddToFavorite(obj)}
-                        onPlus={(obj) => onAddToCart(obj)} />)}
+                {renderItems()}
             </div>
         </div>
     )
