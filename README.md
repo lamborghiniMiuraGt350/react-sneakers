@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# 👟 React Sneakers
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Пет-проєкт інтернет-магазину кросівок на React з інтеграцією MockAPI. Реалізує повний флоу e-commerce застосунку: каталог, обране, кошик та оформлення замовлень.
 
-## Available Scripts
+**🔗 Демо:** https://lamborghinimiuragt350.github.io/react-sneakers/
+**📦 Репозиторій:** github.com/lamborghiniMiuraGt350/react-sneakers
 
-In the project directory, you can run:
+## Функціонал
 
-### `npm start`
+- 📋 **Каталог товарів** — список кросівок, отриманих з MockAPI через axios
+- ❤️ **Обране** — додавання/видалення товарів в обране
+- 🛒 **Кошик** — висувна панель (drawer) з плавними CSS-анімаціями відкриття/закриття
+- 📦 **Замовлення** — окремий компонент Orders з відображенням оформлених замовлень
+- ⏳ **Skeleton-завантаження** — плейсхолдери через ContentLoader на час запиту даних
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Технології
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+| Категорія | Стек |
+|---|---|
+| UI-бібліотека | React |
+| Роутинг | react-router-dom v6.3 |
+| Робота з API | axios + MockAPI |
+| Стилізація | SCSS |
+| Збірка | CRA |
+| Деплой | GitHub Pages |
 
-### `npm test`
+## Що я відпрацював у цьому проєкті
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Роботу з REST API через axios: GET/POST/DELETE запити, синхронізацію стану з бекендом
+- Налаштування роутингу на react-router-dom v6.3
+- Коректну роботу зі шляхами до статичних зображень через `process.env.PUBLIC_URL`
+- Дебаг типових React-помилок: нескінченні ре-рендери через виклик `setState` у тілі компонента, проблеми з `key`, невідповідність ID між сутностями
+- CSS-анімації для кошика та skeleton-заглушки для покращення UX під час завантаження
+- Базову обробку зображень (видалення фону) через Python/PIL для підготовки асетів
 
-### `npm run build`
+## Запуск локально
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+git clone https://github.com/lamborghiniMiuraGt350/react-sneakers.git
+cd react-sneakers
+npm install
+npm run dev
+```
